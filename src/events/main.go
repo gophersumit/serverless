@@ -20,7 +20,7 @@ import (
 var ginLambda *ginadapter.GinLambda
 
 const (
-	EventsTable = "EventsTable"
+	EventsTable = "DynamoTableStack-EventsTableD24865E5-FK229E8G1UD2"
 )
 
 func init() {
