@@ -1,1 +1,1 @@
-curl -X POST https://0loc28nej1.execute-api.us-east-1.amazonaws.com/dev/v1/events -d '{"name": "test", "description": "test", "start_date": "2021-01-01", "end_date": "2021-01-01"}' 
+curl -X PUT https://0loc28nej1.execute-api.us-east-1.amazonaws.com/dev/v1/events -d '{"name": "test", "description": "test", "start_date": "2021-01-01", "end_date": "2021-01-01"}' 
