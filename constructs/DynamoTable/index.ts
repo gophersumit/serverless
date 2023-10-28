@@ -1,5 +1,5 @@
 import { App, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
-import { AttributeType, BillingMode, Table, TableEncryption } from "aws-cdk-lib/aws-dynamodb";
+import { AttributeType, BillingMode, StreamViewType, Table, TableEncryption } from "aws-cdk-lib/aws-dynamodb";
 
 
 export interface DynamoTableStackProps extends StackProps { }
@@ -21,7 +21,11 @@ export class DynamoTableStack extends Stack {
             sortKey : {
                 name: "consumer_id",
                 type: AttributeType.STRING,
-            }
+            },
+            stream: StreamViewType.NEW_IMAGE,
+          
         });
+
+        
     }
 }

@@ -91,6 +91,19 @@ digraph "Diagram" {
           width = 2,
           height = 2.266,
         ];
+        "APIGWStack/StreamLambda" [
+          label = " StreamLambda",
+          fontsize = 12,
+          image = "/Users/sumitagrawal/projects/event-recol-project/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
         "APIGWStack/EventsAPI" [
           label = " EventsAPI",
           fontsize = 12,
@@ -108,6 +121,9 @@ digraph "Diagram" {
     }
   }
   "APIGWStack/EventsLambda" -> "DynamoTableStack/EventsTable" [
+    dir = "both",
+  ];
+  "APIGWStack/StreamLambda" -> "DynamoTableStack/EventsTable" [
     dir = "both",
   ];
   "APIGWStack/EventsAPI" -> "APIGWStack/EventsLambda" [

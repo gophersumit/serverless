@@ -5,6 +5,7 @@ import (
 	"event-recol-project/middleware"
 	"event-recol-project/pkg/eventsapi"
 	"event-recol-project/src/events/handler"
+	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -18,10 +19,6 @@ import (
 )
 
 var ginLambda *ginadapter.GinLambda
-
-const (
-	EventsTable = "DynamoTableStack-EventsTableD24865E5-FK229E8G1UD2"
-)
 
 func init() {
 	gin.SetMode(gin.ReleaseMode)
@@ -37,9 +34,13 @@ func init() {
 	dynamoClient := dynamodb.New(sess)
 	xray.AWS(dynamoClient.Client)
 
+	// read table name from env
+	tableName := os.Getenv("TABLE_NAME")
+
 	eventsInteractor := eventsapi.Intereactor{
 		DynamoClient: dynamoClient,
 		Logger:       &log.Logger,
+		TableName:    tableName,
 	}
 
 	handler.InitHandlers(r, eventsInteractor)

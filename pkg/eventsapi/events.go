@@ -9,10 +9,6 @@ import (
 	"github.com/rs/zerolog"
 )
 
-const (
-	EventsTable = "DynamoTableStack-EventsTableD24865E5-FK229E8G1UD2"
-)
-
 type IntereactorIface interface {
 	PutEvent(ctx context.Context, event PutEventInput) error
 }
@@ -26,6 +22,7 @@ type PutEventInput struct {
 type Intereactor struct {
 	DynamoClient *dynamodb.DynamoDB
 	Logger       *zerolog.Logger
+	TableName    string
 }
 
 func (i Intereactor) PutEvent(ctx context.Context, event PutEventInput) error {
@@ -37,7 +34,7 @@ func (i Intereactor) PutEvent(ctx context.Context, event PutEventInput) error {
 
 	input := &dynamodb.PutItemInput{
 		Item:      av,
-		TableName: aws.String(EventsTable),
+		TableName: aws.String(i.TableName),
 	}
 
 	_, err = i.DynamoClient.PutItemWithContext(ctx, input)
