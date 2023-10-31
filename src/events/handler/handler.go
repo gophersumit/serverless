@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"event-recol-project/pkg/eventsapi"
+	"serverless/pkg/eventsapi"
 
 	"github.com/gin-gonic/gin"
 )

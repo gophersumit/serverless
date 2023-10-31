@@ -11,8 +11,9 @@ export class DynamoTableStack extends Stack {
         super(app, id, props);
 
         this.eventsTable = new Table(this, "EventsTable", {
+                tableName: "events_table",
             encryption: TableEncryption.AWS_MANAGED,
-            removalPolicy: RemovalPolicy.RETAIN,
+            removalPolicy: RemovalPolicy.DESTROY,
             billingMode: BillingMode.PAY_PER_REQUEST,
             partitionKey: {
                 name: "event_id",
@@ -22,10 +23,9 @@ export class DynamoTableStack extends Stack {
                 name: "consumer_id",
                 type: AttributeType.STRING,
             },
-            stream: StreamViewType.NEW_IMAGE,
+            stream: StreamViewType.NEW_AND_OLD_IMAGES,
           
         });
-
-        
+    
     }
 }

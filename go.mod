@@ -1,4 +1,4 @@
-module event-recol-project
+module serverless
 
 go 1.21.3
 

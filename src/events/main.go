@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"event-recol-project/middleware"
-	"event-recol-project/pkg/eventsapi"
-	"event-recol-project/src/events/handler"
 	"os"
+	"serverless/middleware"
+	"serverless/pkg/eventsapi"
+	"serverless/src/events/handler"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"

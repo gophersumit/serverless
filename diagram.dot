@@ -91,8 +91,34 @@ digraph "Diagram" {
           width = 2,
           height = 2.266,
         ];
+        "APIGWStack/MyQueue" [
+          label = " MyQueue",
+          fontsize = 12,
+          image = "/Users/sumitagrawal/projects/event-recol-project/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
         "APIGWStack/StreamLambda" [
           label = " StreamLambda",
+          fontsize = 12,
+          image = "/Users/sumitagrawal/projects/event-recol-project/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "APIGWStack/ProcessorLambda" [
+          label = " ProcessorLambda",
           fontsize = 12,
           image = "/Users/sumitagrawal/projects/event-recol-project/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
           imagescale = "true",
@@ -124,6 +150,12 @@ digraph "Diagram" {
     dir = "both",
   ];
   "APIGWStack/StreamLambda" -> "DynamoTableStack/EventsTable" [
+    dir = "both",
+  ];
+  "APIGWStack/StreamLambda" -> "APIGWStack/MyQueue" [
+    dir = "both",
+  ];
+  "APIGWStack/ProcessorLambda" -> "APIGWStack/MyQueue" [
     dir = "both",
   ];
   "APIGWStack/EventsAPI" -> "APIGWStack/EventsLambda" [
